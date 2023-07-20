@@ -21,12 +21,10 @@ document.getElementById('advancedToggle').addEventListener('change', function ()
 
 document.getElementById('ignoreQuery').addEventListener('change', function () {
   chrome.storage.sync.set({ ignoreQuery: this.checked });
-  console.log('ignoreQuery change', this.checked);
 });
 
 document.getElementById('ignoreFragment').addEventListener('change', function () {
   chrome.storage.sync.set({ ignoreFragment: this.checked });
-  console.log('ignoreFragment change', this.checked);
 });
 
 window.onload = function () {
