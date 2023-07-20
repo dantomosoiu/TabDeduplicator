@@ -3,7 +3,11 @@
 	"name": "Tab Deduplicator",
 	"description": "Closes any duplicate tabs, so that you're left with only one of each URL.",
 	"version": "1.0",
-	"permissions": ["tabs", "storage", "notifications"],
+	"permissions": [
+		"tabs",
+		"storage",
+		"notifications"
+	],
 	"action": {
 		"default_popup": "popup.html",
 		"default_icon": {

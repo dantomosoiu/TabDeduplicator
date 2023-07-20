@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tab deduplicator</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: Arial, sans-serif;
-        width: 250px;
-        height: 200px;
-      }
 
-      .container {
-        width: 250px;
-        height: 150px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Tab Deduplicator</h1>
-    <p id="message">Total tabs removed since installation: <span id="total"></span></p>
-    <br/>
-    <button id="cleanupButton">Deduplicate tabs!</button>
-    <br/>
-    <p id="cleanupMessage"></p>
-    <script src="popup.js"></script>
-  </body>
+<head>
+  <title>Tab deduplicator</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      width: 250px;
+      height: 280px;
+    }
+
+    #extra {
+      align-items: left;
+      width: 240px;
+    }
+
+    #advancedSection {
+      padding-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Tab Deduplicator</h1>
+  <p id="message">Total tabs removed since installation: <span id="total"></span></p>
+  <br />
+  <button id="cleanupButton">Deduplicate tabs!</button>
+  <br />
+  <p id="cleanupMessage">&nbsp;</p>
+
+  <div id="extra">
+    <label id="advancedLabel"><input type="checkbox" id="advancedToggle"> Show Advanced </label>
+    <div id="advancedSection" style="display:none;">
+      <label><input type="checkbox" id="ignoreQuery"> Ignore Query Parameters</label><br>
+      <label><input type="checkbox" id="ignoreFragment"> Ignore URL Fragments</label><br>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+
+</body>
+
 </html>

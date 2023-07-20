@@ -24,16 +24,28 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 async function cleanupTabs() {
+  const { ignoreQuery, ignoreFragment } = await new Promise(resolve => chrome.storage.sync.get(['ignoreQuery', 'ignoreFragment'], resolve));
+
   const tabs = await chrome.tabs.query({});
   const urls = new Map();
   let tabsClosed = 0;
 
   for (const tab of tabs) {
-    if (urls.has(tab.url)) {
+    let tabUrl = tab.url;
+
+    if (ignoreQuery) {
+      tabUrl = tabUrl.split('?')[0];
+    }
+
+    if (ignoreFragment) {
+      tabUrl = tabUrl.split('#')[0];
+    }
+
+    if (urls.has(tabUrl)) {
       await chrome.tabs.remove(tab.id);
       tabsClosed++;
     } else {
-      urls.set(tab.url, tab.id);
+      urls.set(tabUrl, tab.id);
     }
   }
 
